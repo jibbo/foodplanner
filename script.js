@@ -3,13 +3,13 @@
 const DEBUG = false;
 
 const breakfast = [
-    { name: "Caffè + latte vegetale con calcio aggiunto 200 ml + 1 yogurt greco 0% + 70 gr di pane ai cereali oppure 40 gr di fette biscottate di farro/kamut/cereali con marmellata + 30 gr di frutta secca oleosa + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "Chia pudding + latte vegetale con calcio aggiunto 200 ml + 40 gr di cereali biologici / muesli oppure 40 gr di fette biscottate di farro / kamut / cereali con marmellata + caffè + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "Caffè + latte vegetale con calcio aggiunto 200 ml + 1 yogurt greco 0 % + torta allo yogurt 70 gr + 30 gr di frutta secca ammollata + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "Caffè + 150 ml di latte vegetale con calcio aggiunto + pancake con marmellata senza zuccheri o sciroppo d’acero / agave + 3 biscotti biologici + 30 gr di frutta secca + frutta secca 30 gr + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "Caffè + latte vegetale con calcio aggiunto 200 ml + frittata di 1 uovo e 2 albumi(70 gr) + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 2 },
-    { name: "Caffè + latte vegetale con calcio aggiunto 200 ml + asiago 50 gr + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 1 },
-    { name: "Caffè + latte vegetale con calcio aggiunto 200 ml + hummus 200 gr + 30 gr di fette biscottate di farro / kamut / cereali o 50 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 7 }
+    { name: "Latte vegetale con calcio aggiunto 200 ml + 1 yogurt greco 0% + 70 gr di pane ai cereali oppure 40 gr di fette biscottate di farro/kamut/cereali + 30 gr di frutta secca oleosa + 1 frutto fresco 150 gr", weight: 7 },
+    { name: "Chia pudding + latte vegetale con calcio aggiunto 200 ml + 40 gr di muesli oppure 40 gr di fette biscottate di farro / kamut / cereali + 1 frutto fresco 150 gr", weight: 7 },
+    { name: "Latte vegetale con calcio aggiunto 200 ml + 1 yogurt greco 0 % + torta allo yogurt 70 gr + 30 gr di frutta secca ammollata + 1 frutto fresco 150 gr", weight: 7 },
+    { name: "150 ml di latte vegetale con calcio aggiunto + pancake + 3 biscotti biologici + 30 gr di frutta secca + frutta secca 30 gr + 1 frutto fresco 150 gr", weight: 7 },
+    { name: "Latte vegetale con calcio aggiunto 200 ml + frittata di 1 uovo e 2 albumi(70 gr) + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 2 },
+    { name: "Latte vegetale con calcio aggiunto 200 ml + asiago 50 gr + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 1 },
+    { name: "Latte vegetale con calcio aggiunto 200 ml + hummus 200 gr + 30 gr di fette biscottate di farro / kamut / cereali o 50 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 7 }
 ];
 
 const mealBase = [
