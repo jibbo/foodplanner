@@ -50,8 +50,6 @@ const dinnerProteins = [
     { name: "200 gr burger lupini", weight: 3 },
 ];
 
-var currentDietCSV = "Lun,Mar,Merc,Gio,Ven,Sab\n";
-
 // since bootstrap will be bundle jQuery, I could use it but I don't want to...
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -59,6 +57,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //register all listeners
     document.getElementById('save').onclick = function () {
+        const currentDietCSV = readPlan();
         this.href = "data:text/csv;charset=utf-8," + encodeURI(currentDietCSV);
         this.target = "_blank";
         this.download = new Date().toLocaleDateString() + ".csv"
@@ -91,25 +90,21 @@ var generateRow = function (arr, name, compositionRule) {
     if (DEBUG) {
         console.log(name + " phase");
     }
-    currentDietCSV += name + ","
     var trElement = document.createElement("tr");
     var thElement = document.createElement("th");
     thElement.textContent = name;
     trElement.appendChild(thElement);
     for (var i = 0; i < 6; i++) {
         var elem = compositionRule(arrRnd(arr));
-        currentDietCSV += elem + ",";
         var tdElement = document.createElement("td");
+
         var pElement = document.createElement("small");
         pElement.textContent = elem;
-
-        // TODO
-        // pElement.setAttribute("contenteditable", "true");
+        pElement.setAttribute("contenteditable", "true");
 
         trElement.appendChild(tdElement);
         tdElement.appendChild(pElement);
     }
-    currentDietCSV += "\n";
     document.getElementById('tableBody').appendChild(trElement);
 }
 
@@ -140,3 +135,20 @@ var computeSumWeight = function (arr) {
 var randomInt = function (max) {
     return parseInt(Math.random() * max + 1);
 };
+
+var readPlan = function () {
+    var a = "";
+    var table = document.getElementById("foodTable");
+    for (var i = 0; i < table.rows.length; i++) {
+        // starts from one to skip the left column which contains useless stuff
+        for (var j = 1; j < table.rows[i].cells.length; j++) {
+            if (i == 0 && j == 0) {
+                continue;
+            }
+            var elem = table.rows[i].cells[j].textContent;
+            a += elem + ",";
+        }
+        a += "\n";
+    }
+    return a;
+}
