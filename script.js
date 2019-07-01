@@ -67,6 +67,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         window.print();
     }
     document.getElementById('refresh').onclick = function () {
+        document.getElementById('tableBody').innerHTML = ""
         generatePlan();
     }
 });
