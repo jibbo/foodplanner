@@ -7,9 +7,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const auth = new Auth();
 
     //register all listeners
-
-    document.getElementById('login').onclick = function () {
-        auth.signIn();
+    if (auth.user == null) {
+        document.getElementById('login').onclick = function () {
+            auth.signIn();
+        }
+    } else {
+        document.getElementById('login').classList.add("hidden");
     }
     document.getElementById('save').onclick = function () {
         const currentDietCSV = readPlan();
