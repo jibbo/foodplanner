@@ -15,7 +15,8 @@ class Auth {
         const myAuth = this;
         this.auth.signInWithPopup(this.provider).then(function (result) {
             var token = result.credential.accessToken;
-            myAuth.user = result.user;
+            myAuth._user = result.user;
+            console.log("logged as: " + myAuth._user);
 
             document.getElementById('login').classList.add("hidden");
         }).catch(function (error) {
@@ -27,5 +28,9 @@ class Auth {
             alert("Couldn't Sign-In");
         });
 
+    }
+
+    get user() {
+        return this._user;
     }
 }

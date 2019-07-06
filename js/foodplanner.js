@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     } else {
         document.getElementById('login').classList.add("hidden");
+        console.log("logged as: " + auth.user);
     }
 
     document.getElementById('save').onclick = function () {
