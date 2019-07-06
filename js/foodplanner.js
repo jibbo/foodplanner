@@ -1,6 +1,6 @@
 "use strict";
 
-const DEBUG = true;
+const DEBUG = window.location.indexOf("localhost") > 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const db = new Db();
