@@ -8,7 +8,8 @@ class Db {
         this.storage.collection("plans").where("userId", "==", user.id + "");
     }
 
-    save(plan) {
+    save(user, plan) {
+        plan.userId = user.uid;
         this.storage.collection("plans").add(plan);
     }
 }

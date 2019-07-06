@@ -14,11 +14,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     } else {
         document.getElementById('login').classList.add("hidden");
     }
+
     document.getElementById('save').onclick = function () {
-        const currentDietCSV = readPlan();
-        this.href = "data:text/csv;charset=utf-8," + encodeURI(currentDietCSV);
-        this.target = "_blank";
-        this.download = new Date().toLocaleDateString() + ".csv"
+        const plan = readPlanJSON();
+        if (auth.user != null) {
+            db.save(auth.user, plan)
+        } else {
+            const currentDietCSV = readPlanCSV();
+            this.href = "data:text/csv;charset=utf-8," + encodeURI(currentDietCSV);
+            this.target = "_blank";
+            this.download = new Date().toLocaleDateString() + ".csv"
+        }
     }
     document.getElementById('print').onclick = function () {
         window.print();
@@ -97,8 +103,8 @@ var randomInt = function (max) {
     return parseInt(Math.random() * max + 1);
 };
 
-var readPlan = function () {
-    var a = "";
+var readPlanCSV = function () {
+    var csv = "";
     var table = document.getElementById("foodTable");
     for (var i = 0; i < table.rows.length; i++) {
         // starts from one to skip the left column which contains useless stuff
@@ -107,11 +113,25 @@ var readPlan = function () {
                 continue;
             }
             var elem = table.rows[i].cells[j].textContent;
-            a += elem + ",";
+            csv += elem + ",";
         }
-        a += "\n";
+        csv += "\n";
     }
-    return a;
+    return csv;
+}
+
+var readPlanJSON = function () {
+    var json = {};
+    var table = document.getElementById("foodTable");
+    // starts from one to skip headers of table
+    for (var i = 1; i < table.rows.length; i++) {
+        json[i - 1] = {};
+        for (var j = 1; j < table.rows[i].cells.length; j++) {
+            var elem = table.rows[i].cells[j].textContent;
+            json[i - 1][j - 1] = elem;
+        }
+    }
+    return json;
 }
 
 // TODO this should all be moved to DB
