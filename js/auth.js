@@ -12,9 +12,10 @@ class Auth {
     }
 
     signIn() {
+        const myAuth = this;
         this.auth.signInWithPopup(this.provider).then(function (result) {
             var token = result.credential.accessToken;
-            this.user = result.user;
+            myAuth.user = result.user;
 
             document.getElementById('login').classList.add("hidden");
         }).catch(function (error) {
