@@ -28,8 +28,4 @@ class Auth {
         });
 
     }
-
-    set user(user) {
-        this.user = user;
-    }
 }
