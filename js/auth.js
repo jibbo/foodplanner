@@ -18,9 +18,6 @@ class Auth {
             myAuth._user = result.user;
             successListener();
         }).catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            var email = error.email;
             errorListener(error);
         });
 

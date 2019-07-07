@@ -9,16 +9,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //register all listeners
     if (auth.user == null) {
         document.getElementById('login').onclick = function () {
-            auth.signIn(function () {
+            auth.signIn(() => {
                 console.log("logged as: " + myAuth._user);
                 document.getElementById('login').classList.add("hidden");
                 document.getElementById('tableBody').innerHTML = ""
                 document.getElementById('import').onclick = function () {
                     importPlan(auth, db);
-                }, function (error) {
-                    console.error(error);
-                    alert("Couldn't Sign-In");
                 }
+            }, (error) => {
+                console.error(error);
+                alert("Couldn't Sign-In");
             });
         }
     } else {
