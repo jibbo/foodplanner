@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 _user = user
                 console.log("logged as: " + _user);
                 document.getElementById('login').classList.add("hidden");
-                document.getElementById('tableBody').innerHTML = ""
                 document.getElementById('import').onclick = function () {
                     importPlan(_user, db);
                 }
@@ -26,7 +25,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     } else {
         document.getElementById('login').classList.add("hidden");
-        document.getElementById('tableBody').innerHTML = ""
         document.getElementById('import').onclick = function () {
             importPlan(auth, db);
         }
@@ -121,6 +119,7 @@ var randomInt = function (max) {
 };
 
 var importPlan = function (user, db) {
+    document.getElementById('tableBody').innerHTML = ""
     db.read(user)
         .then(function (doc) {
             console.log(doc.data());
