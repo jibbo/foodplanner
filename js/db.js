@@ -5,11 +5,11 @@ class Db {
     }
 
     read(user) {
-        this.storage.collection("plans").doc(user.id);
+        this.storage.collection("plans").doc(user.uid);
     }
 
     save(user, plan) {
         plan.userId = user.uid;
-        this.storage.collection("plans").doc(plan.userId).set(plan);
+        this.storage.collection("plans").doc(user.uid).set(plan);
     }
 }
