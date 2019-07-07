@@ -130,15 +130,13 @@ var importPlan = function (user, db) {
                 var thElement = document.createElement("th");
                 thElement.textContent = name;
                 trElement.appendChild(thElement);
-                for (var i = 0; i < 3; i++) {
-                    for (var j = 0; j < 6; j++) {
-                        var elem = doc.data()[i][j];
-                        var tdElement = document.createElement("td");
-                        var pElement = document.createElement("small");
-                        pElement.textContent = elem;
-                        trElement.appendChild(tdElement);
-                        tdElement.appendChild(pElement);
-                    }
+                for (var j = 0; j < 7; j++) {
+                    var elem = doc.data()[i][j];
+                    var tdElement = document.createElement("td");
+                    var pElement = document.createElement("small");
+                    pElement.textContent = elem;
+                    trElement.appendChild(tdElement);
+                    tdElement.appendChild(pElement);
                 }
                 document.getElementById('tableBody').appendChild(trElement);
             }
@@ -169,11 +167,11 @@ var readPlanJSON = function () {
     var json = {};
     var table = document.getElementById("foodTable");
     // starts from one to skip headers of table
-    for (var i = 1; i < table.rows.length; i++) {
-        json[i - 1] = {};
-        for (var j = 1; j < table.rows[i].cells.length; j++) {
+    for (var i = 0; i < table.rows.length; i++) {
+        json[i] = {};
+        for (var j = 0; j < table.rows[i].cells.length; j++) {
             var elem = table.rows[i].cells[j].textContent;
-            json[i - 1][j - 1] = elem;
+            json[i][j] = elem;
         }
     }
     return json;
