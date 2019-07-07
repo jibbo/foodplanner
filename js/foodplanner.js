@@ -122,6 +122,7 @@ var randomInt = function (max) {
 
 var importPlan = function (user, db) {
     const planJSON = db.read(user);
+    console.log(planJSON);
     // todo remove 3 with more appropiate stuff
     for (var i = 0; i < 3; i++) {
         var trElement = document.createElement("tr");
