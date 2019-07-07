@@ -15,7 +15,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 document.getElementById('tableBody').innerHTML = ""
                 document.getElementById('import').onclick = function () {
                     importPlan(auth, db);
-                }
+                },
+                    (error) => {
+                        console.error(error);
+                        alert("Couldn't Sign-In");
+                    }
             });
         }
     } else {

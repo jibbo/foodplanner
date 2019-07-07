@@ -11,19 +11,17 @@ class Auth {
         this.auth.languageCode = 'it_IT';
     }
 
-    signIn(callback) {
+    signIn(successListener, errorListener) {
         const myAuth = this;
         this.auth.signInWithPopup(this.provider).then(function (result) {
             var token = result.credential.accessToken;
             myAuth._user = result.user;
-            callback();
+            successListener();
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             var email = error.email;
-            console.error(error);
-
-            alert("Couldn't Sign-In");
+            errorListener(error);
         });
 
     }
