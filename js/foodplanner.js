@@ -121,26 +121,31 @@ var randomInt = function (max) {
 };
 
 var importPlan = function (user, db) {
-    const planJSON = db.read(user);
-    console.log(planJSON);
-    // todo remove 3 with more appropiate stuff
-    for (var i = 0; i < 3; i++) {
-        var trElement = document.createElement("tr");
-        var thElement = document.createElement("th");
-        thElement.textContent = name;
-        trElement.appendChild(thElement);
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 6; j++) {
-                var elem = planJSON[i][j];
-                var tdElement = document.createElement("td");
-                var pElement = document.createElement("small");
-                pElement.textContent = elem;
-                trElement.appendChild(tdElement);
-                tdElement.appendChild(pElement);
+    db.read(user)
+        .then(function (doc) {
+            console.log(doc);
+            // todo remove 3 with more appropiate stuff
+            for (var i = 0; i < 3; i++) {
+                var trElement = document.createElement("tr");
+                var thElement = document.createElement("th");
+                thElement.textContent = name;
+                trElement.appendChild(thElement);
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 6; j++) {
+                        var elem = planJSON[i][j];
+                        var tdElement = document.createElement("td");
+                        var pElement = document.createElement("small");
+                        pElement.textContent = elem;
+                        trElement.appendChild(tdElement);
+                        tdElement.appendChild(pElement);
+                    }
+                }
+                document.getElementById('tableBody').appendChild(trElement);
             }
-        }
-        document.getElementById('tableBody').appendChild(trElement);
-    }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }
 
 var readPlanCSV = function () {
