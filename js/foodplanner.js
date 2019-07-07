@@ -123,7 +123,7 @@ var randomInt = function (max) {
 var importPlan = function (user, db) {
     db.read(user)
         .then(function (doc) {
-            console.log(doc);
+            console.log(doc.data());
             // todo remove 3 with more appropiate stuff
             for (var i = 0; i < 3; i++) {
                 var trElement = document.createElement("tr");
@@ -132,7 +132,7 @@ var importPlan = function (user, db) {
                 trElement.appendChild(thElement);
                 for (var i = 0; i < 3; i++) {
                     for (var j = 0; j < 6; j++) {
-                        var elem = doc[i][j];
+                        var elem = doc.data()[i][j];
                         var tdElement = document.createElement("td");
                         var pElement = document.createElement("small");
                         pElement.textContent = elem;
