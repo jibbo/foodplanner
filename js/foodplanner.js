@@ -2,19 +2,22 @@
 
 const DEBUG = window.location.href.indexOf("localhost") > 0;
 
+var _user;
+
 window.addEventListener('DOMContentLoaded', (event) => {
     const db = new Db();
     const auth = new Auth();
 
     //register all listeners
-    if (auth.user == null) {
+    if (_user == null) {
         document.getElementById('login').onclick = function () {
-            auth.signIn(() => {
-                console.log("logged as: " + myAuth._user);
+            auth.signIn((user) => {
+                _user = user
+                console.log("logged as: " + _user);
                 document.getElementById('login').classList.add("hidden");
                 document.getElementById('tableBody').innerHTML = ""
                 document.getElementById('import').onclick = function () {
-                    importPlan(auth, db);
+                    importPlan(_user, db);
                 }
             }, (error) => {
                 console.error(error);
@@ -31,8 +34,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('save').onclick = function () {
         const plan = readPlanJSON();
-        if (auth.user != null) {
-            db.save(auth.user, plan)
+        if (_user != null) {
+            db.save(_user, plan)
         } else {
             const currentDietCSV = readPlanCSV();
             this.href = "data:text/csv;charset=utf-8," + encodeURI(currentDietCSV);
@@ -117,8 +120,8 @@ var randomInt = function (max) {
     return parseInt(Math.random() * max + 1);
 };
 
-var importPlan = function (auth, db) {
-    const planJSON = db.read(auth.user);
+var importPlan = function (user, db) {
+    const planJSON = db.read(user);
     // todo remove 3 with more appropiate stuff
     for (var i = 0; i < 3; i++) {
         var trElement = document.createElement("tr");

@@ -12,11 +12,8 @@ class Auth {
     }
 
     signIn(successListener, errorListener) {
-        const myAuth = this;
         this.auth.signInWithPopup(this.provider).then(function (result) {
-            var token = result.credential.accessToken;
-            myAuth._user = result.user;
-            successListener();
+            successListener(result.user);
         }).catch(function (error) {
             errorListener(error);
         });
