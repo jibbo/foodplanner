@@ -13,7 +13,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     } else {
         document.getElementById('login').classList.add("hidden");
-        console.log("logged as: " + auth.user);
+        document.getElementById('tableBody').innerHTML = ""
+        importPlan(db);
     }
 
     document.getElementById('save').onclick = function () {
@@ -103,6 +104,28 @@ var computeSumWeight = function (arr) {
 var randomInt = function (max) {
     return parseInt(Math.random() * max + 1);
 };
+
+var importPlan = function (auth, db) {
+    const planJSON = db.read(auth.user);
+    // todo remove 3 with more appropiate stuff
+    for (var i = 0; i < 3; i++) {
+        var trElement = document.createElement("tr");
+        var thElement = document.createElement("th");
+        thElement.textContent = name;
+        trElement.appendChild(thElement);
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 6; j++) {
+                var elem = planJSON[i][j];
+                var tdElement = document.createElement("td");
+                var pElement = document.createElement("small");
+                pElement.textContent = elem;
+                trElement.appendChild(tdElement);
+                tdElement.appendChild(pElement);
+            }
+        }
+        document.getElementById('tableBody').appendChild(trElement);
+    }
+}
 
 var readPlanCSV = function () {
     var csv = "";

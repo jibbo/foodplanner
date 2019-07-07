@@ -10,6 +10,6 @@ class Db {
 
     save(user, plan) {
         plan.userId = user.uid;
-        this.storage.collection("plans").add(plan);
+        this.storage.collection("plans").set(plan);
     }
 }
