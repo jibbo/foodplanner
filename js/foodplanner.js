@@ -132,7 +132,7 @@ var importPlan = function (user, db) {
                 trElement.appendChild(thElement);
                 for (var i = 0; i < 3; i++) {
                     for (var j = 0; j < 6; j++) {
-                        var elem = planJSON[i][j];
+                        var elem = doc[i][j];
                         var tdElement = document.createElement("td");
                         var pElement = document.createElement("small");
                         pElement.textContent = elem;
