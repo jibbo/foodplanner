@@ -11,14 +11,12 @@ class Auth {
         this.auth.languageCode = 'it_IT';
     }
 
-    signIn() {
+    signIn(callback) {
         const myAuth = this;
         this.auth.signInWithPopup(this.provider).then(function (result) {
             var token = result.credential.accessToken;
             myAuth._user = result.user;
-            console.log("logged as: " + myAuth._user);
-
-            document.getElementById('login').classList.add("hidden");
+            callback();
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;

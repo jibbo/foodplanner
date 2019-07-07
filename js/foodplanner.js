@@ -9,12 +9,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //register all listeners
     if (auth.user == null) {
         document.getElementById('login').onclick = function () {
-            auth.signIn();
+            auth.signIn(() => {
+                console.log("logged as: " + myAuth._user);
+                document.getElementById('login').classList.add("hidden");
+                document.getElementById('tableBody').innerHTML = ""
+                document.getElementById('import').onclick = function () {
+                    importPlan(auth, db);
+                }
+            });
         }
     } else {
         document.getElementById('login').classList.add("hidden");
         document.getElementById('tableBody').innerHTML = ""
-        importPlan(db);
+        document.getElementById('import').onclick = function () {
+            importPlan(auth, db);
+        }
     }
 
     document.getElementById('save').onclick = function () {
