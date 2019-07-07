@@ -15,18 +15,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 _user = user
                 console.log("logged as: " + _user);
                 document.getElementById('login').classList.add("hidden");
-                document.getElementById('import').onclick = function () {
-                    importPlan(_user, db);
-                }
             }, (error) => {
                 console.error(error);
                 alert("Couldn't Sign-In");
             });
-        }
-    } else {
-        document.getElementById('login').classList.add("hidden");
-        document.getElementById('import').onclick = function () {
-            importPlan(auth, db);
         }
     }
 
@@ -34,6 +26,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const plan = readPlanJSON();
         if (_user != null) {
             db.save(_user, plan)
+            alert("saved");
         } else {
             const currentDietCSV = readPlanCSV();
             this.href = "data:text/csv;charset=utf-8," + encodeURI(currentDietCSV);
@@ -41,6 +34,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.download = new Date().toLocaleDateString() + ".csv"
         }
     }
+
+    document.getElementById('import').onclick = function () {
+        importPlan(_user, db);
+    }
+
     document.getElementById('print').onclick = function () {
         window.print();
     }
@@ -50,7 +48,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     // main
-    generatePlan();
+    importPlan(_user, db);
 });
 
 var generatePlan = function () {
@@ -129,7 +127,7 @@ var importPlan = function (user, db) {
                 var thElement = document.createElement("th");
                 thElement.textContent = name;
                 trElement.appendChild(thElement);
-                for (var j = 0; j < 7; j++) {
+                for (var j = 0; j < 6; j++) {
                     var elem = doc.data()[i][j];
                     var tdElement = document.createElement("td");
                     var pElement = document.createElement("small");
@@ -166,11 +164,11 @@ var readPlanJSON = function () {
     var json = {};
     var table = document.getElementById("foodTable");
     // starts from one to skip headers of table
-    for (var i = 0; i < table.rows.length; i++) {
-        json[i] = {};
-        for (var j = 0; j < table.rows[i].cells.length; j++) {
+    for (var i = 1; i < table.rows.length; i++) {
+        json[i - 1] = {};
+        for (var j = 1; j < table.rows[i].cells.length; j++) {
             var elem = table.rows[i].cells[j].textContent;
-            json[i][j] = elem;
+            json[i - 1][j - 1] = elem;
         }
     }
     return json;

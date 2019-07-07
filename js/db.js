@@ -5,10 +5,14 @@ class Db {
     }
 
     read(user) {
-        return this.storage.collection("plans").doc(user.uid).get();
+        // TODO make usage of user
+        // return this.storage.collection("plans").doc(user.uid).get();
+        return this.storage.collection("plans").doc("plan").get();
     }
 
     save(user, plan) {
-        this.storage.collection("plans").doc(user.uid).set(plan);
+        // TODO make usage of user
+        // this.storage.collection("plans").doc(user.uid).set(plan);
+        this.storage.collection("plans").doc("plan").set(plan);
     }
 }
