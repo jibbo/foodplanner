@@ -132,6 +132,7 @@ var importPlan = function (user, db) {
                     var tdElement = document.createElement("td");
                     var pElement = document.createElement("small");
                     pElement.textContent = elem;
+                    pElement.setAttribute("contenteditable", "true");
                     trElement.appendChild(tdElement);
                     tdElement.appendChild(pElement);
                 }
