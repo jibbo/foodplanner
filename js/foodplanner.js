@@ -9,7 +9,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const auth = new Auth();
 
     // main
-    importPlan(_user, db);
+    importPlan(_user, db, () => {
+        showComputedSections();
+    });
 
     //register all listeners
     if (_user == null) {
@@ -45,11 +47,48 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('print').onclick = function () {
         window.print();
     }
+
     document.getElementById('refresh').onclick = function () {
         document.getElementById('tableBody').innerHTML = ""
         generatePlan();
     }
 });
+
+
+var showComputedSections = function () {
+    // Monday is the first day of the week
+    var dayOfWeek = new Date().getDay();
+    if (dayOfWeek == 0) {
+        dayOfWeek = 6;
+    } else {
+        dayOfWeek -= 1;
+    }
+
+    computeDaySection(dayOfWeek, document.getElementById('todayContent'));
+    computeDaySection(dayOfWeek + 1, document.getElementById('tomorrowContent'));
+}
+
+var computeDaySection = function (dayIndex, parentElement) {
+    const foodTable = document.getElementById('foodTable');
+
+    var trElement = document.createElement("tr");
+    parentElement.appendChild(trElement);
+
+    for (var i = 0; i < mealNames.length; i++) {
+        // first row and col contain only names, they can be skipped
+        const elem = foodTable.rows[i + 1].cells[dayIndex + 1].textContent;
+        var tdElement = document.createElement("div");
+        tdElement.classList.add("card");
+        tdElement.classList.add("card-fixed");
+        var hElement = document.createElement("h4");
+        var pElement = document.createElement("p");
+        hElement.textContent = mealNames[i];
+        pElement.textContent = elem;
+        tdElement.appendChild(hElement)
+        tdElement.appendChild(pElement)
+        trElement.appendChild(tdElement);
+    }
+}
 
 var generatePlan = function () {
     // breakfast row
@@ -115,21 +154,13 @@ var randomInt = function (max) {
     return parseInt(Math.random() * max + 1);
 };
 
-var importPlan = function (user, db) {
+var importPlan = function (user, db, callback) {
     document.getElementById('tableBody').innerHTML = ""
     db.read(user)
         .then(function (doc) {
             if (DEBUG) {
                 console.log(doc);
             }
-            var dayOfWeek = new Date().getDay();
-            if (dayOfWeek == 0) {
-                dayOfWeek = 6;
-            } else {
-                dayOfWeek += 1;
-            }
-            var todayTr = document.createElement("tr");
-            var tomorrowTr = document.createElement("tr");
             // todo remove 3 with more appropiate stuff
             for (var i = 0; i < mealNames.length; i++) {
                 var trElement = document.createElement("tr");
@@ -144,39 +175,10 @@ var importPlan = function (user, db) {
                     pElement.setAttribute("contenteditable", "true");
                     trElement.appendChild(tdElement);
                     tdElement.appendChild(pElement);
-
-                    // TODO refactor this code
-                    if (j == dayOfWeek) {
-                        var todayTd = document.createElement("div");
-                        todayTd.classList.add("card");
-                        todayTd.classList.add("card-fixed");
-                        var todayH = document.createElement("h4");
-                        var todayP = document.createElement("small");
-                        todayH.textContent = mealNames[i];
-                        todayP.textContent = elem;
-                        todayTd.appendChild(todayH)
-                        todayTd.appendChild(todayP)
-                        todayTr.appendChild(todayTd);
-                    }
-
-                    // TODO refactor this code
-                    if (j == dayOfWeek + 1) {
-                        var tomorrowTd = document.createElement("div");
-                        tomorrowTd.classList.add("card");
-                        tomorrowTd.classList.add("card-fixed");
-                        var tomorrowH = document.createElement("h4");
-                        var tomorrowP = document.createElement("small");
-                        tomorrowH.textContent = mealNames[i];
-                        tomorrowP.textContent = elem;
-                        tomorrowTd.appendChild(tomorrowH)
-                        tomorrowTd.appendChild(tomorrowP)
-                        tomorrowTr.appendChild(tomorrowTd);
-                    }
                 }
-                document.getElementById('todayContent').appendChild(todayTr);
-                document.getElementById('tomorrowContent').appendChild(tomorrowTr);
                 document.getElementById('tableBody').appendChild(trElement);
             }
+            callback();
         })
         .catch(function (error) {
             console.error(error);
