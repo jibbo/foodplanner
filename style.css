@@ -2,21 +2,24 @@
 
 html{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 body{
     margin: 0px;
+    padding: 0px;
     padding-bottom: 30px;
     background: #f0f0f0;
 }
 
 header{
-    width: 100%;
     display: block;
     padding: 1.5em;
     font-family: cursive;
     background: white;
 }
+
 main{
     margin-top: 30px;
     margin-left: 1.5em;
@@ -85,3 +88,13 @@ td{
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* media queries */
+@media only screen and (max-width: 600px){
+    header{
+        width: 100%;
+    }
+    .card{
+        margin-top: 1.5em;
+    }
+}
