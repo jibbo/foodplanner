@@ -80,7 +80,8 @@ var computeDaySection = function (dayIndex, parentElement) {
         var tdElement = document.createElement("div");
         tdElement.classList.add("card");
         tdElement.classList.add("card-fixed");
-        var hElement = document.createElement("h4");
+        tdElement.classList.add("left");
+        var hElement = document.createElement("h3");
         var pElement = document.createElement("p");
         hElement.textContent = mealNames[i];
         pElement.textContent = elem;

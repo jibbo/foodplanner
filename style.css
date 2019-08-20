@@ -3,35 +3,36 @@
 html{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 body{
     margin: 0px;
     padding-bottom: 30px;
     background: #f0f0f0;
 }
+
 header{
     display: block;
     padding: 1.5em;
-    background-color: #009688; 
-    color: white;
+    font-family: cursive;
+    background: white;
 }
 main{
     margin-top: 30px;
     margin-left: 1.5em;
     margin-right: 1.5em;
 }
+
 /* table{
-    background: white;
-    border-collapse: coll÷apse;
-    padding: 1em;
     border: 1px solid #d2d2d2;
-    border-radius: 20px;
+    background: white;
+    border-collapse: collapse;
 } */
+
 th{
     text-align: center;
     padding: 1em;
-    /* border: 1px solid #d2d2d2; */
-    /* border-radius: 20px; */
 }
+
 td{
     text-align: center;
     vertical-align: middle;
@@ -45,8 +46,12 @@ td{
     float: right;
 }
 
+.left{
+    float: left;
+}
+
 .title{
-    font-size: 14pt;
+    font-size: 16pt;
 }
 
 .hidden{
@@ -61,13 +66,18 @@ td{
     background: white;
     text-align: left;
     margin-right: 1.5em;
-    float: left;
     border: 1px solid #d2d2d2;
 }
 
 .card-fixed{
     width: 300px;
     min-height: 150px;
+}
+
+.sign-in{
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /* Material Icons */
