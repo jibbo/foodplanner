@@ -5,6 +5,7 @@ html{
 }
 body{
     margin: 0px;
+    padding-bottom: 30px;
     background: #f0f0f0;
 }
 header{
@@ -18,15 +19,18 @@ main{
     margin-left: 1.5em;
     margin-right: 1.5em;
 }
-table{
+/* table{
     background: white;
-    border-collapse: collapse;
+    border-collapse: coll÷apse;
+    padding: 1em;
     border: 1px solid #d2d2d2;
-}
+    border-radius: 20px;
+} */
 th{
     text-align: center;
     padding: 1em;
-    border: 1px solid #d2d2d2;
+    /* border: 1px solid #d2d2d2; */
+    /* border-radius: 20px; */
 }
 td{
     text-align: center;
@@ -47,6 +51,23 @@ td{
 
 .hidden{
     display: none;
+}
+
+.card{
+    border-radius: 20px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 1.5em;
+    background: white;
+    text-align: left;
+    margin-right: 1.5em;
+    float: left;
+    border: 1px solid #d2d2d2;
+}
+
+.card-fixed{
+    width: 300px;
+    min-height: 150px;
 }
 
 /* Material Icons */
