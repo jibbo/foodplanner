@@ -11,6 +11,7 @@ body{
 }
 
 header{
+    width: 100%;
     display: block;
     padding: 1.5em;
     font-family: cursive;
