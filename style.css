@@ -18,6 +18,7 @@ header{
     padding: 1.5em;
     font-family: cursive;
     background: white;
+    box-sizing: border-box;
 }
 
 main{
@@ -91,9 +92,6 @@ td{
 
 /* media queries */
 @media only screen and (max-width: 600px){
-    header{
-        width: 100%;
-    }
     .card{
         margin-top: 1.5em;
     }
