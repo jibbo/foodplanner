@@ -71,23 +71,20 @@ var showComputedSections = function () {
 var computeDaySection = function (dayIndex, parentElement) {
     const foodTable = document.getElementById('foodTable');
 
-    var trElement = document.createElement("tr");
-    parentElement.appendChild(trElement);
-
     for (var i = 0; i < mealNames.length; i++) {
         // first row and col contain only names, they can be skipped
         const elem = foodTable.rows[i + 1].cells[dayIndex + 1].textContent;
-        var tdElement = document.createElement("div");
-        tdElement.classList.add("card");
-        tdElement.classList.add("card-fixed");
-        tdElement.classList.add("left");
+        var divElement = document.createElement("div");
+        divElement.classList.add("card");
+        divElement.classList.add("card-fixed");
+        // divElement.classList.add("left");
         var hElement = document.createElement("h3");
         var pElement = document.createElement("p");
         hElement.textContent = mealNames[i];
-        pElement.textContent = elem;
-        tdElement.appendChild(hElement)
-        tdElement.appendChild(pElement)
-        trElement.appendChild(tdElement);
+        pElement.innerHTML = elem.replace(/\+/g, "<br/ > ");
+        divElement.appendChild(hElement);
+        divElement.appendChild(pElement);
+        parentElement.appendChild(divElement);
     }
 }
 

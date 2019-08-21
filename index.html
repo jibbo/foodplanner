@@ -12,43 +12,50 @@
 
 <body>
     <header>
-        <span class="title">Piano Settimanale</span>
-        <a href="#" id="login" class="right sign-in"><i class="material-icons md-dark">person</i></a>
-        <a href="#" id="save" class="right" style="margin-right:5px"><i class="material-icons md-dark">save</i></a>
-        <a href="#" id="print" class="right" style="margin-right:5px"><i class="material-icons md-dark">print</i></a>
-        <a href="#" id="refresh" class="right" style="margin-right:5px">
-            <i class="material-icons md-dark">refresh</i>
-        </a>
-        <a href="#" id="import" class="right"><i class="material-icons md-dark">import_export</i></a>
+        <nav>
+            <span class="title">Piano Settimanale</span>
+            <span style="float: right">
+                <a href="#" id="login" class="sign-in"><i class="material-icons md-dark">person</i></a>
+                <a href="#" id="save" style="margin-right:5px"><i class="material-icons md-dark">save</i></a>
+                <a href="#" id="print" style="margin-right:5px"><i class="material-icons md-dark">print</i></a>
+                <a href="#" id="refresh" style="margin-right:5px">
+                    <i class="material-icons md-dark">refresh</i>
+                </a>
+                <a href="#" id="import"><i class="material-icons md-dark">import_export</i></a>
+            </span>
+        </nav>
     </header>
     <main>
         <div id="today">
             <h1>Oggi</h1>
-            <div id="todayContent">
+            <div id="todayContent" class="row">
             </div>
         </div>
         <div id="tomorrow">
             <h1>Domani</h1>
-            <div id="tomorrowContent">
+            <div id="tomorrowContent" class="row">
             </div>
         </div>
         <h1>Settimana</h1>
-        <table id="foodTable">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Lunedì</th>
-                    <th>Martedì</th>
-                    <th>Mercoledì</th>
-                    <th>Giovedì</th>
-                    <th>Venerdì</th>
-                    <th>Sabato</th>
-                    <th>Domenica</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-        </table>
+
+        <div class="row">
+            <table id="foodTable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Lunedì</th>
+                        <th>Martedì</th>
+                        <th>Mercoledì</th>
+                        <th>Giovedì</th>
+                        <th>Venerdì</th>
+                        <th>Sabato</th>
+                        <th>Domenica</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
     </main>
     <script defer src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>

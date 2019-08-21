@@ -1,7 +1,7 @@
 /* html elements */
 
 html{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Raleway, "Open Sans", "Noto Sans", "Roboto", "Droid Sans", Verdana, Geneva, Tahoma, sans-serif;
     margin: 0px;
     padding: 0px;
 }
@@ -10,15 +10,19 @@ body{
     margin: 0px;
     padding: 0px;
     padding-bottom: 30px;
-    background: #f0f0f0;
+    background: #f2f2f2;
 }
 
-header{
-    display: block;
+nav{
+    justify-content: space-between;
     padding: 1.5em;
-    font-family: cursive;
     background: white;
-    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
+header nav a {
+    text-decoration: none;
 }
 
 main{
@@ -28,7 +32,6 @@ main{
 }
 
 table{
-    border: 1px solid #d2d2d2;
     background: white;
     border-radius: 20px;
 }
@@ -42,20 +45,22 @@ td{
     text-align: center;
     vertical-align: middle;
     padding: 1em;
+    white-space: normal;
+}
+
+p{
+    line-height: 1.75em;
 }
 
 /* classes */
 
-.right{
-    float: right;
-}
-
-.left{
-    float: left;
-}
-
 .title{
     font-size: 16pt;
+    font-family: cursive;
+    display: inline-block;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
 }
 
 .hidden{
@@ -63,6 +68,7 @@ td{
 }
 
 .card{
+    display: inline-block;
     border-radius: 20px;
     padding-left: 1.5em;
     padding-right: 1.5em;
@@ -70,12 +76,11 @@ td{
     background: white;
     text-align: left;
     margin-right: 1.5em;
-    border: 1px solid #d2d2d2;
 }
 
 .card-fixed{
-    width: 15em;
-    min-height: 150px;
+    width: 200px;
+    white-space: normal;
 }
 
 .sign-in{
@@ -84,15 +89,15 @@ td{
     cursor: pointer;
 }
 
+.row{
+    display: flex;
+    white-space: nowrap;
+    overflow-x: auto;
+    align-items: baseline;
+}
+
 /* Material Icons */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
-/* media queries */
-@media only screen and (max-width: 600px){
-    .card{
-        margin-top: 1.5em;
-    }
-}
