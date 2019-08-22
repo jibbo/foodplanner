@@ -81,7 +81,7 @@ var computeDaySection = function (dayIndex, parentElement) {
         var hElement = document.createElement("h3");
         var pElement = document.createElement("p");
         hElement.textContent = mealNames[i];
-        pElement.innerHTML = elem.replace(/\+/g, "<br/ > ");
+        pElement.textContent = elem;
         divElement.appendChild(hElement);
         divElement.appendChild(pElement);
         parentElement.appendChild(divElement);

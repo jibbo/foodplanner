@@ -18,7 +18,6 @@ nav{
     padding: 1.5em;
     background: white;
     max-width: 100%;
-    overflow-x: scroll;
 }
 
 header nav a {
@@ -31,10 +30,10 @@ main{
     margin-right: 1.5em;
 }
 
-table{
+/* table{
     background: white;
     border-radius: 20px;
-}
+} */
 
 th{
     text-align: center;
@@ -70,23 +69,14 @@ p{
 .card{
     display: inline-block;
     border-radius: 20px;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-bottom: 1.5em;
+    padding: 1.5em;
     background: white;
     text-align: left;
     margin-right: 1.5em;
 }
 
 .card-fixed{
-    width: 200px;
-    white-space: normal;
-}
-
-.sign-in{
-    background: none;
-    border: none;
-    cursor: pointer;
+    max-width: 300px;
 }
 
 .row{
@@ -101,3 +91,22 @@ p{
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* media queries for responsiveness */
+
+@media only screen and (max-width: 720px) {
+    main{
+        margin:0px;
+    }
+    .card{
+        display: block;
+        float: none;
+        border: 1px solid #d2d2d2;
+        margin-top: 10px;
+        border-radius: 0px;
+        margin-right: 0px;
+    }
+    .card-fixed{
+        max-width: none;
+    }
+}
