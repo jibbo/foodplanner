@@ -30,10 +30,10 @@ main{
     margin-right: 1.5em;
 }
 
-/* table{
+table{
     background: white;
     border-radius: 20px;
-} */
+}
 
 th{
     text-align: center;
@@ -99,16 +99,18 @@ p{
     main{
         margin:0px;
     }
+    h1{
+        margin-left: 0.5em;
+    }
     .row{
         display: block;
     }
     .card{
         display: block;
         float: none;
-        border: 1px solid #d2d2d2;
         margin-top: 10px;
-        border-radius: 0px;
-        margin-right: 0px;
+        margin-left: 1em;
+        margin-right: 1em;
     }
     .card-fixed{
         max-width: none;
