@@ -106,6 +106,7 @@ p{
     .card{
         display: block;
         float: none;
+        margin: 0 auto;
         margin-top: 10px;
     }
     .card-fixed{

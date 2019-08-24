@@ -1,21 +1,13 @@
 "use strict";
 
-var _user;
-
 window.addEventListener('DOMContentLoaded', (event) => {
     const db = new Db();
     const auth = new Auth();
 
-    // main
-    importPlan(_user, db, () => {
-        showComputedSections();
-    });
-
     //register all listeners
-    if (_user == null) {
+    if (auth.user == null) {
         $('#login').onclick = function () {
             auth.signIn((user) => {
-                _user = user
                 console.log("logged as: " + _user);
                 $('#login').classList.add("hidden");
             }, (error) => {
@@ -23,12 +15,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 alert("Couldn't Sign-In");
             });
         }
+
+        generatePlan();
+        showComputedSections();
+    } else {
+        importPlan(auth.user, db, () => {
+            showComputedSections();
+        });
     }
 
     $('#save').onclick = function () {
         const plan = readPlanJSON();
-        if (_user != null) {
-            db.save(_user, plan)
+        if (auth.user != null) {
+            db.save(auth.user, plan)
             alert("saved");
         } else {
             const currentDietCSV = readPlanCSV();
@@ -39,7 +38,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     $('#import').onclick = function () {
-        importPlan(_user, db);
+        importPlan(auth.user, db);
     }
 
     $('#print').onclick = function () {
@@ -48,7 +47,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     $('#refresh').onclick = function () {
         $('#tableBody').innerHTML = ""
+        $('#todayContent').innerHTML = ""
+        $('#tomorrowContent').innerHTML = ""
         generatePlan();
+        showComputedSections();
     }
 });
 

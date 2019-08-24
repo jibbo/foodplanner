@@ -9,10 +9,19 @@ class Auth {
 
         this.auth = firebase.auth();
         this.auth.languageCode = 'it_IT';
+
+        this.auth.onAuthStateChanged(function (user) {
+            if (user) {
+                this._user = user;
+            } else {
+                this._user = null;
+            }
+        });
     }
 
     signIn(successListener, errorListener) {
         this.auth.signInWithPopup(this.provider).then(function (result) {
+            this._user = user;
             successListener(result.user);
         }).catch(function (error) {
             errorListener(error);
