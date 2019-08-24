@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         auth.signIn((user) => {
             console.log("logged as: " + user);
             $('#login').classList.add("hidden");
+            cleanup();
             foodPlanner.importPlan(user, db, () => {
                 foodPlanner.showComputedSections();
             });
@@ -50,10 +51,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     $('#refresh').onclick = function () {
+        cleanup();
+        foodPlanner.generatePlan();
+        foodPlanner.showComputedSections();
+    }
+
+    var cleanup = function () {
         $('#tableBody').innerHTML = ""
         $('#todayContent').innerHTML = ""
         $('#tomorrowContent').innerHTML = ""
-        foodPlanner.generatePlan();
-        foodPlanner.showComputedSections();
     }
 });
