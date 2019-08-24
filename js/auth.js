@@ -21,7 +21,7 @@ class Auth {
 
     signIn(successListener, errorListener) {
         this.auth.signInWithPopup(this.provider).then(function (result) {
-            this._user = user;
+            this._user = result.user;
             successListener(result.user);
         }).catch(function (error) {
             errorListener(error);
