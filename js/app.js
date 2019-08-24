@@ -7,24 +7,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //register all listeners
     if (auth.user == null) {
-        $('#login').onclick = function () {
-            auth.signIn((user) => {
-                console.log("logged as: " + user);
-                $('#login').classList.add("hidden");
-                foodPlanner.importPlan(auth.user, db, () => {
-                    foodplanner.showComputedSections();
-                });
-            }, (error) => {
-                console.error(error);
-                alert("Couldn't Sign-In");
-            });
-        }
-
         foodPlanner.generatePlan();
         foodPlanner.showComputedSections();
     } else {
         foodPlanner.importPlan(auth.user, db, () => {
             foodplanner.showComputedSections();
+        });
+    }
+
+    $('#login').onclick = function () {
+        auth.signIn((user) => {
+            console.log("logged as: " + user);
+            $('#login').classList.add("hidden");
+            foodPlanner.importPlan(user, db, () => {
+                foodplanner.showComputedSections();
+            });
+        }, (error) => {
+            console.error(error);
+            alert("Couldn't Sign-In");
         });
     }
 
