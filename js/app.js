@@ -11,6 +11,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             auth.signIn((user) => {
                 console.log("logged as: " + user);
                 $('#login').classList.add("hidden");
+                foodPlanner.importPlan(auth.user, db, () => {
+                    foodplanner.showComputedSections();
+                });
             }, (error) => {
                 console.error(error);
                 alert("Couldn't Sign-In");
