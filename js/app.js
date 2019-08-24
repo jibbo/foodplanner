@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (auth.user == null) {
         $('#login').onclick = function () {
             auth.signIn((user) => {
-                console.log("logged as: " + _user);
+                console.log("logged as: " + user);
                 $('#login').classList.add("hidden");
             }, (error) => {
                 console.error(error);
