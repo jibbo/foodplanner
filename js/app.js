@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         foodPlanner.showComputedSections();
     } else {
         foodPlanner.importPlan(auth.user, db, () => {
-            foodplanner.showComputedSections();
+            foodPlanner.showComputedSections();
         });
     }
 
