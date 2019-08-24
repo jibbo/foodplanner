@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("logged as: " + user);
             $('#login').classList.add("hidden");
             foodPlanner.importPlan(user, db, () => {
-                foodplanner.showComputedSections();
+                foodPlanner.showComputedSections();
             });
         }, (error) => {
             console.error(error);
