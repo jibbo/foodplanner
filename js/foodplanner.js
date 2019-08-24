@@ -1,7 +1,5 @@
 "use strict";
 
-const DEBUG = window.location.href.indexOf("localhost") > 0;
-
 var _user;
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -15,11 +13,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //register all listeners
     if (_user == null) {
-        document.getElementById('login').onclick = function () {
+        $('#login').onclick = function () {
             auth.signIn((user) => {
                 _user = user
                 console.log("logged as: " + _user);
-                document.getElementById('login').classList.add("hidden");
+                $('#login').classList.add("hidden");
             }, (error) => {
                 console.error(error);
                 alert("Couldn't Sign-In");
@@ -27,7 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    document.getElementById('save').onclick = function () {
+    $('#save').onclick = function () {
         const plan = readPlanJSON();
         if (_user != null) {
             db.save(_user, plan)
@@ -40,16 +38,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    document.getElementById('import').onclick = function () {
+    $('#import').onclick = function () {
         importPlan(_user, db);
     }
 
-    document.getElementById('print').onclick = function () {
+    $('#print').onclick = function () {
         window.print();
     }
 
-    document.getElementById('refresh').onclick = function () {
-        document.getElementById('tableBody').innerHTML = ""
+    $('#refresh').onclick = function () {
+        $('#tableBody').innerHTML = ""
         generatePlan();
     }
 });
@@ -64,12 +62,12 @@ var showComputedSections = function () {
         dayOfWeek -= 1;
     }
 
-    computeDaySection(dayOfWeek, document.getElementById('todayContent'));
-    computeDaySection(dayOfWeek + 1, document.getElementById('tomorrowContent'));
+    computeDaySection(dayOfWeek, $('#todayContent'));
+    computeDaySection(dayOfWeek + 1, $('#tomorrowContent'));
 }
 
 var computeDaySection = function (dayIndex, parentElement) {
-    const foodTable = document.getElementById('foodTable');
+    const foodTable = $('#foodTable');
 
     for (var i = 0; i < mealNames.length; i++) {
         // first row and col contain only names, they can be skipped
@@ -104,9 +102,7 @@ var generatePlan = function () {
 }
 
 var generateRow = function (arr, name, compositionRule) {
-    if (DEBUG) {
-        console.log(name + " phase");
-    }
+    console.log(name + " phase");
     var trElement = document.createElement("tr");
     var thElement = document.createElement("th");
     thElement.textContent = name;
@@ -121,7 +117,7 @@ var generateRow = function (arr, name, compositionRule) {
         trElement.appendChild(tdElement);
         tdElement.appendChild(pElement);
     }
-    document.getElementById('tableBody').appendChild(trElement);
+    $('#tableBody').appendChild(trElement);
 }
 
 var arrRnd = function (arr) {
@@ -131,9 +127,7 @@ var arrRnd = function (arr) {
     for (var i = 0; i < arr.length; i++) {
         index = index - arr[i]['weight'];
         if (index <= 0) {
-            if (DEBUG) {
-                console.log("Found: [" + i + "/" + arr.length + "](" + pivot + "/" + sumWeights + ")");
-            }
+            console.log("Found: [" + i + "/" + arr.length + "](" + pivot + "/" + sumWeights + ")");
             return arr[i]['name'];
         }
     }
@@ -153,13 +147,10 @@ var randomInt = function (max) {
 };
 
 var importPlan = function (user, db, callback) {
-    document.getElementById('tableBody').innerHTML = ""
+    $('#tableBody').innerHTML = ""
     db.read(user)
         .then(function (doc) {
-            if (DEBUG) {
-                console.log(doc);
-            }
-            // todo remove 3 with more appropiate stuff
+            console.log(doc);
             for (var i = 0; i < mealNames.length; i++) {
                 var trElement = document.createElement("tr");
                 var thElement = document.createElement("th");
@@ -174,7 +165,7 @@ var importPlan = function (user, db, callback) {
                     trElement.appendChild(tdElement);
                     tdElement.appendChild(pElement);
                 }
-                document.getElementById('tableBody').appendChild(trElement);
+                $('#tableBody').appendChild(trElement);
             }
             callback();
         })
