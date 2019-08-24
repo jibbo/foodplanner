@@ -2,7 +2,6 @@ class Auth {
 
     constructor() {
         this.provider = new firebase.auth.GoogleAuthProvider();
-        this.provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
         this.provider.setCustomParameters({
             'display': 'popup'
         });
