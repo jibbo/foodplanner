@@ -10,6 +10,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         foodPlanner.generatePlan();
         foodPlanner.showComputedSections();
     } else {
+        console.log("logged as: " + user);
+        $('#login').classList.add("hidden");
+        cleanup();
         foodPlanner.importPlan(auth.user, db, () => {
             foodPlanner.showComputedSections();
         });
