@@ -13,7 +13,7 @@ class FoodPlanner {
 
         this.computeDaySection(dayOfWeek, $('#todayContent'));
         let tomorrow = dayOfWeek + 1;
-        if (dayOfWeek == 7) {
+        if (tomorrow == 7) {
             tomorrow == 0;
         }
         this.computeDaySection(tomorrow, $('#tomorrowContent'));
