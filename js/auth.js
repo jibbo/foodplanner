@@ -9,6 +9,8 @@ class Auth {
         this.auth = firebase.auth();
         this.auth.languageCode = 'it_IT';
 
+        this._user = this.currentUser;
+
         this.auth.onAuthStateChanged(function (user) {
             if (user) {
                 this._user = user;
@@ -20,12 +22,19 @@ class Auth {
 
     signIn(successListener, errorListener) {
         var myThis = this;
-        this.auth.signInWithPopup(this.provider).then(function (result) {
-            myThis._user = result.user;
-            successListener(result.user);
-        }).catch(function (error) {
-            errorListener(error);
-        });
+        this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => {
+                return myThis.auth.signInWithPopup(this.provider)
+                    .then(function (result) {
+                        myThis._user = result.user;
+                        successListener(result.user);
+                    })
+                    .catch(function (error) {
+                        errorListener(error);
+                    });
+            }).catch(function (error) {
+                errorListener(error);
+            });;
 
     }
 
