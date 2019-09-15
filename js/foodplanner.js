@@ -4,7 +4,7 @@ class FoodPlanner {
 
     showComputedSections() {
         // Monday is the first day of the week
-        var dayOfWeek = new Date().getDay();
+        let dayOfWeek = new Date().getDay();
         if (dayOfWeek == 0) {
             dayOfWeek = 6;
         } else {
@@ -12,20 +12,24 @@ class FoodPlanner {
         }
 
         this.computeDaySection(dayOfWeek, $('#todayContent'));
+        let tomorrow = dayOfWeek + 1;
+        if (dayOfWeek == 7) {
+            tomorrow == 0;
+        }
         this.computeDaySection(dayOfWeek + 1, $('#tomorrowContent'));
     }
 
     computeDaySection(dayIndex, parentElement) {
         const foodTable = $('#foodTable');
 
-        for (var i = 0; i < mealNames.length; i++) {
+        for (let i = 0; i < mealNames.length; i++) {
             // first row and col contain only names, they can be skipped
             const elem = foodTable.rows[i + 1].cells[dayIndex + 1].textContent;
-            var divElement = document.createElement("div");
+            let divElement = document.createElement("div");
             divElement.classList.add("card");
             divElement.classList.add("card-fixed");
-            var hElement = document.createElement("h3");
-            var pElement = document.createElement("p");
+            let hElement = document.createElement("h3");
+            let pElement = document.createElement("p");
             hElement.textContent = mealNames[i];
             pElement.textContent = elem;
             divElement.appendChild(hElement);
@@ -51,14 +55,14 @@ class FoodPlanner {
 
     generateRow(arr, name, compositionRule) {
         console.log(name + " phase");
-        var trElement = document.createElement("tr");
-        var thElement = document.createElement("th");
+        let trElement = document.createElement("tr");
+        let thElement = document.createElement("th");
         thElement.textContent = name;
         trElement.appendChild(thElement);
-        for (var i = 0; i < 7; i++) {
-            var elem = compositionRule(this.arrRnd(arr));
-            var tdElement = document.createElement("td");
-            var pElement = document.createElement("small");
+        for (let i = 0; i < 7; i++) {
+            let elem = compositionRule(this.arrRnd(arr));
+            let tdElement = document.createElement("td");
+            let pElement = document.createElement("small");
             pElement.textContent = elem;
             pElement.setAttribute("contenteditable", "true");
 
@@ -71,8 +75,8 @@ class FoodPlanner {
     arrRnd(arr) {
         const sumWeights = this.computeSumWeight(arr);
         const pivot = this.randomInt(sumWeights);
-        var index = pivot;
-        for (var i = 0; i < arr.length; i++) {
+        let index = pivot;
+        for (let i = 0; i < arr.length; i++) {
             index = index - arr[i]['weight'];
             if (index <= 0) {
                 console.log("Found: [" + i + "/" + arr.length + "](" + pivot + "/" + sumWeights + ")");
@@ -83,8 +87,8 @@ class FoodPlanner {
     };
 
     computeSumWeight(arr) {
-        var sum = 0;
-        for (var i = 0; i < arr.length; i++) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
             sum += arr[i]['weight'];
         }
         return sum;
@@ -99,15 +103,15 @@ class FoodPlanner {
         db.read(user)
             .then(function (doc) {
                 console.log(doc);
-                for (var i = 0; i < mealNames.length; i++) {
-                    var trElement = document.createElement("tr");
-                    var thElement = document.createElement("th");
+                for (let i = 0; i < mealNames.length; i++) {
+                    let trElement = document.createElement("tr");
+                    let thElement = document.createElement("th");
                     thElement.textContent = mealNames[i];
                     trElement.appendChild(thElement);
-                    for (var j = 0; j < 7; j++) {
-                        var elem = doc.data()[i][j];
-                        var tdElement = document.createElement("td");
-                        var pElement = document.createElement("small");
+                    for (let j = 0; j < 7; j++) {
+                        let elem = doc.data()[i][j];
+                        let tdElement = document.createElement("td");
+                        let pElement = document.createElement("small");
                         pElement.textContent = elem;
                         pElement.setAttribute("contenteditable", "true");
                         trElement.appendChild(tdElement);
@@ -123,15 +127,15 @@ class FoodPlanner {
     }
 
     readPlanCSV() {
-        var csv = "";
-        var table = document.getElementById("foodTable");
-        for (var i = 0; i < table.rows.length; i++) {
+        let csv = "";
+        let table = document.getElementById("foodTable");
+        for (let i = 0; i < table.rows.length; i++) {
             // starts from one to skip the left column which contains useless stuff
-            for (var j = 1; j < table.rows[i].cells.length; j++) {
+            for (let j = 1; j < table.rows[i].cells.length; j++) {
                 if (i == 0 && j == 0) {
                     continue;
                 }
-                var elem = table.rows[i].cells[j].textContent;
+                let elem = table.rows[i].cells[j].textContent;
                 csv += elem + ",";
             }
             csv += "\n";
@@ -140,13 +144,13 @@ class FoodPlanner {
     }
 
     readPlanJSON() {
-        var json = {};
-        var table = document.getElementById("foodTable");
+        let json = {};
+        let table = document.getElementById("foodTable");
         // starts from one to skip headers of table
-        for (var i = 1; i < table.rows.length; i++) {
+        for (let i = 1; i < table.rows.length; i++) {
             json[i - 1] = {};
-            for (var j = 1; j < table.rows[i].cells.length; j++) {
-                var elem = table.rows[i].cells[j].textContent;
+            for (let j = 1; j < table.rows[i].cells.length; j++) {
+                let elem = table.rows[i].cells[j].textContent;
                 json[i - 1][j - 1] = elem;
             }
         }
