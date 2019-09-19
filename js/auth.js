@@ -9,7 +9,7 @@ class Auth {
         this.auth = firebase.auth();
         this.auth.languageCode = 'it_IT';
 
-        this._user = this.currentUser;
+        this._user = this.auth.currentUser;
 
         this.auth.onAuthStateChanged(function (user) {
             if (user) {
