@@ -12,7 +12,7 @@ class Db {
 
     save(user, plan) {
         // TODO make usage of user
-        // this.storage.collection("plans").doc(user.uid).set(plan);
+        plan["userId"] = user.uid;
         this.storage.collection("plans").doc("plan").set(plan);
     }
 }
