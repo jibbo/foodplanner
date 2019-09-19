@@ -1,6 +1,6 @@
 class Auth {
 
-    constructor() {
+    constructor(onAuthListener) {
         this.provider = new firebase.auth.GoogleAuthProvider();
         this.provider.setCustomParameters({
             'display': 'popup'
@@ -17,6 +17,7 @@ class Auth {
             } else {
                 this._user = null;
             }
+            onAuthListener(this._user);
         });
     }
 

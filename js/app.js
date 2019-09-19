@@ -2,21 +2,23 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const db = new Db();
-    const auth = new Auth();
+    const auth = new Auth((user) => {
+        //register all listeners
+        if (auth.user == null) {
+            foodPlanner.generatePlan();
+            foodPlanner.showComputedSections();
+        } else {
+            console.log("logged as: " + user);
+            $('#login').classList.add("hidden");
+            cleanup();
+            foodPlanner.importPlan(auth.user, db, () => {
+                foodPlanner.showComputedSections();
+            });
+        }
+    });
     const foodPlanner = new FoodPlanner();
 
-    //register all listeners
-    if (auth.user == null) {
-        foodPlanner.generatePlan();
-        foodPlanner.showComputedSections();
-    } else {
-        console.log("logged as: " + user);
-        $('#login').classList.add("hidden");
-        cleanup();
-        foodPlanner.importPlan(auth.user, db, () => {
-            foodPlanner.showComputedSections();
-        });
-    }
+
 
     $('#login').onclick = function () {
         auth.signIn((user) => {

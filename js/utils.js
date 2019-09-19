@@ -15,11 +15,12 @@
 
 function $(qualifier) {
     const prefix = qualifier.charAt(0);
+
     if (prefix == "#") {
         return document.getElementById(qualifier.substring(1));
     } else if (prefix == ".") {
         return document.getElementsByClassName(qualifier.substring(1));
     } else {
-        return null;
+        throw "Element not found";
     }
 }

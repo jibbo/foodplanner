@@ -2,6 +2,7 @@
 
 class FoodPlanner {
 
+    // TODO cleanup dayOfTheWeek and tomorrow
     showComputedSections() {
         // Monday is the first day of the week
         let dayOfWeek = new Date().getDay();
