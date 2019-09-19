@@ -30,11 +30,6 @@ main{
     margin-right: 1.5em;
 }
 
-table{
-    background: white;
-    border-radius: 20px;
-}
-
 th{
     text-align: center;
     padding: 1em;
@@ -73,6 +68,12 @@ p{
     background: white;
     text-align: left;
     margin-right: 1.5em;
+    margin-bottom: 1.5em;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .card-fixed{
@@ -107,7 +108,7 @@ p{
         display: block;
         float: none;
         margin: 0 auto;
-        margin-top: 10px;
+        margin-bottom: 1.5em;
     }
     .card-fixed{
         max-width: none;
