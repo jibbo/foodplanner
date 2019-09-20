@@ -15,12 +15,22 @@
 
 function $(qualifier) {
     const prefix = qualifier.charAt(0);
-
+    let elem = {}
     if (prefix == "#") {
-        return document.getElementById(qualifier.substring(1));
+        elem = document.getElementById(qualifier.substring(1));
     } else if (prefix == ".") {
-        return document.getElementsByClassName(qualifier.substring(1));
+        elem = document.getElementsByClassName(qualifier.substring(1));
     } else {
         throw "Element not found";
     }
+
+    elem.addClass = function (className) {
+        this.classList.add(className);
+    }
+
+    elem.removeClass = function (className) {
+        this.classList.remove(className);
+    }
+
+    return elem;
 }

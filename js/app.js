@@ -1,18 +1,7 @@
 "use strict";
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    const firebaseConfig = {
-        apiKey: "AIzaSyCCYFTuG_u2Pl0khUh9xCZUNHM5tCk4ndk",
-        authDomain: "foodplanner-984a5.firebaseapp.com",
-        databaseURL: "https://foodplanner-984a5.firebaseio.com",
-        projectId: "foodplanner-984a5",
-        storageBucket: "",
-        messagingSenderId: "669112832711",
-        appId: "1:669112832711:web:5ac34b62953a811c"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
+    initFirebase();
     const db = new Db();
     const auth = new Auth((user) => {
         //register all listeners
@@ -21,7 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             foodPlanner.showComputedSections();
         } else {
             console.log("logged as: " + user);
-            $('#login').classList.add("hidden");
+            $('#login').addClass("hidden");
             cleanup();
             foodPlanner.importPlan(auth.user, db, () => {
                 foodPlanner.showComputedSections();
@@ -35,7 +24,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     $('#login').onclick = function () {
         auth.signIn((user) => {
             console.log("logged as: " + user);
-            $('#login').classList.add("hidden");
+            $('#login').addClass("hidden");
             cleanup();
             foodPlanner.importPlan(user, db, () => {
                 foodPlanner.showComputedSections();
@@ -73,9 +62,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
         foodPlanner.showComputedSections();
     }
 
-    var cleanup = function () {
+    let cleanup = function () {
         $('#tableBody').innerHTML = ""
         $('#todayContent').innerHTML = ""
         $('#tomorrowContent').innerHTML = ""
     }
 });
+
+function initFirebase() {
+    const firebaseConfig = {
+        apiKey: "AIzaSyCCYFTuG_u2Pl0khUh9xCZUNHM5tCk4ndk",
+        authDomain: "foodplanner-984a5.firebaseapp.com",
+        databaseURL: "https://foodplanner-984a5.firebaseio.com",
+        projectId: "foodplanner-984a5",
+        storageBucket: "",
+        messagingSenderId: "669112832711",
+        appId: "1:669112832711:web:5ac34b62953a811c"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+}
