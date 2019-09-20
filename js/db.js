@@ -6,13 +6,14 @@ class Db {
 
     read(user) {
         // TODO make usage of user
-        // return this.storage.collection("plans").doc(user.uid).get();
+        // return this.storage.collection("plans").doc("plan_" + user.uid).get();
         return this.storage.collection("plans").doc("plan").get();
     }
 
     save(user, plan) {
-        // TODO make usage of user
         plan["userId"] = user.uid;
+        // TODO make usage of user
+        // this.storage.collection("plans").doc("plan_" + user.uid).set(plan);
         this.storage.collection("plans").doc("plan").set(plan);
     }
 }
