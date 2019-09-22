@@ -16,4 +16,8 @@ class Db {
         // this.storage.collection("plans").doc("plan_" + user.uid).set(plan);
         this.storage.collection("plans").doc("plan").set(plan);
     }
+
+    addFood(user, food) {
+
+    }
 }

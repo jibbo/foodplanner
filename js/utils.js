@@ -2,16 +2,17 @@
 
 // This makes writing to the console only in debug
 (function () {
-    const DEBUG = window.location.href.indexOf("localhost") > 0 || window.location.href.startsWith("file://");
-
-    var preservedConsoleLog = console.log;
-
+    let preservedConsoleLog = console.log;
     console.log = function () {
-        if (DEBUG) {
+        if (isDebugMode()) {
             preservedConsoleLog.apply(console, arguments);
         }
     }
 })();
+
+function isDebugMode() {
+    return window.location.href.indexOf("localhost") > 0 || window.location.href.startsWith("file://");
+}
 
 function $(qualifier) {
     const prefix = qualifier.charAt(0);

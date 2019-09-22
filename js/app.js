@@ -3,6 +3,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     initFirebase();
     // TODO figure out how to do auth in this file for every js
+    // window.db = new DB();
 });
 
 function initFirebase() {
