@@ -1,5 +1,10 @@
 /* html elements */
 
+:root{
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+}
+
 html{
     font-family: Raleway, "Open Sans", "Noto Sans", "Roboto", "Droid Sans", Verdana, Geneva, Tahoma, sans-serif;
     margin: 0px;
@@ -85,6 +90,22 @@ p{
     white-space: nowrap;
     overflow-x: auto;
     align-items: baseline;
+}
+
+.message{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.success{
+    background-color: var(--success-color);
+}
+
+.error{
+    background-color: var(--error-color);
 }
 
 /* Material Icons */

@@ -34,3 +34,16 @@ function $(qualifier) {
 
     return elem;
 }
+
+function snackbar(text, success) {
+    let elem = document.createElement("div");
+    elem.innerText = text;
+    if (success) {
+        elem.classList.add("success");
+    } else {
+        elem.classList.add("error");
+    }
+    document.body.appendChild(elem);
+
+    setTimeout(() => { document.body.removeChild(elem) }, 2500)
+}
