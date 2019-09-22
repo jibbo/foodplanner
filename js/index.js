@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    const db = new Db();
     const foodPlanner = new FoodPlanner();
 
     $('#login').onclick = function () {
