@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             });
         }, (error) => {
             console.error(error);
-            alert("Couldn't Sign-In");
+            snackbar("Couldn't Sign-In");
         });
     }
 

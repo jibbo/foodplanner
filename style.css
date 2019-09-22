@@ -94,10 +94,11 @@ p{
 
 .message{
     position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 100px;
+    bottom: 1.5em;
+    right: 1.5em;
     border-radius: 5px;
+    padding: 1.5em;
+    color: white;
 }
 
 .success{

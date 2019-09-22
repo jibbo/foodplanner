@@ -38,6 +38,7 @@ function $(qualifier) {
 function snackbar(text, success) {
     let elem = document.createElement("div");
     elem.innerText = text;
+    elem.classList.add("message");
     if (success) {
         elem.classList.add("success");
     } else {
