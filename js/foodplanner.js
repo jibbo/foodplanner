@@ -160,7 +160,7 @@ class FoodPlanner {
 }
 
 
-const mealNames = ["Colazione", "Pranzo", "Cena"]
+const mealNames = ["Breakfast", "Lunch", "Dinner"]
 
 // TODO this should all be moved to DB
 const breakfast = [
