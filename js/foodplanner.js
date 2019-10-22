@@ -165,7 +165,7 @@ const mealNames = ["Breakfast", "Lunch", "Dinner"]
 // TODO this should all be moved to DB
 const breakfast = [
     { name: "1 vasetto yougurt greco 0%", weight: 7 },
-    { name: "1 uovo + 2 albumi", weight: 7 }
+    { name: "1 uovo + 2 albumi", weight: 2 }
 ];
 
 const mealBase = [
@@ -173,7 +173,7 @@ const mealBase = [
 ]
 
 const lunchBase = [
-    "80gr cereali conditi con 200gr di verdure + Pane 40gr"
+    "80gr cereali conditi con 200gr di verdure"
 ];
 
 const lunchProteins = [
