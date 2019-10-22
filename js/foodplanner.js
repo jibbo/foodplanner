@@ -164,13 +164,8 @@ const mealNames = ["Breakfast", "Lunch", "Dinner"]
 
 // TODO this should all be moved to DB
 const breakfast = [
-    { name: "200ml Latte vegetale + 1 yogurt greco 0% + 70 gr di pane ai cereali oppure 40 gr di fette biscottate di farro/kamut/cereali + 30 gr di frutta secca oleosa + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "100gr Chia pudding+ 200ml latte vegetale+ 40 gr di muesli oppure 40 gr di fette biscottate di farro / kamut / cereali + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "200ml Latte vegetale + 1 yogurt greco 0 % + torta allo yogurt 70 gr + 30 gr di frutta secca ammollata + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "150 ml di latte vegetale con calcio aggiunto + pancake + 3 biscotti biologici + 30 gr di frutta secca + frutta secca 30 gr + 1 frutto fresco 150 gr", weight: 7 },
-    { name: "200ml Latte vegetale + frittata di 1 uovo e 2 albumi(70 gr) + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 2 },
-    { name: "200ml Latte vegetale + asiago 50 gr + 40 gr di fette biscottate di farro / kamut / cereali o 70 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 1 },
-    { name: "200ml Latte vegetale + hummus 200 gr + 30 gr di fette biscottate di farro / kamut / cereali o 50 gr di pane ai cereali + verdura facoltativa q.b. + 30 gr di frutta secca ammollata + 1 frutto fresco 150", weight: 7 }
+    { name: "1 vasetto yougurt greco 0%", weight: 7 },
+    { name: "1 uovo + 2 albumi", weight: 7 }
 ];
 
 const mealBase = [
@@ -183,14 +178,10 @@ const lunchBase = [
 
 const lunchProteins = [
     { name: "Legumi 200gr (secchi 70gr)", weight: 7 },
-    { name: "Cecina 200gr", weight: 7 },
-    { name: "Tempeh 90gr", weight: 2 },
-    { name: "Seitan 70gr", weight: 1 },
-    { name: "Parmiggiano 20gr", weight: 1 },
-    { name: "Monte Veronese 50gr", weight: 1 },
     { name: "Mozzarella 100gr", weight: 1 },
     { name: "2 uova", weight: 2 },
-    { name: "Pesce (salmone/ sgombro) 50gr", weight: 2 }
+    { name: "Pesce 200gr", weight: 2 },
+    { name: "Pollo 200gr", weight: 2 }
 ];
 
 const dinnerBase = [
@@ -199,14 +190,12 @@ const dinnerBase = [
 
 const dinnerCereals = [
     { name: "Pane cereali 80gr", weight: 7 },
-    { name: "farro 80gr", weight: 7 },
-    { name: "quinoa 50gr", weight: 7 }
+    { name: "cereali 80gr", weight: 7 },
 ];
 
 const dinnerProteins = [
-    { name: "200gr tofu", weight: 1 },
-    { name: "200gr tempeh", weight: 2 },
-    { name: "200gr pesce", weight: 2 },
-    { name: "140 gr pasta lenticchie", weight: 7 },
-    { name: "200 gr burger lupini", weight: 3 },
+    { name: "150gr tempeh", weight: 2 },
+    { name: "150gr pollo", weight: 3 },
+    { name: "150gr coniglio", weight: 3 },
+    { name: "150gr pesce bianco", weight: 3 },
 ];
